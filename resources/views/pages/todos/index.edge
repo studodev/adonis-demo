@@ -1,0 +1,33 @@
+@include('components/header.edge')
+
+<h1>Todolist</h1>
+
+<form action="{{ route('todos.store') }}" method="post">
+    <label for="task-input">
+        Tâche
+    </label>
+    <input type="text" name="task" id="task-input">
+
+    <button>Enregistrer</button>
+    {{ csrfField() }}
+</form>
+
+<ol>
+    @each(todo in todos)
+        <li>
+            <a href="{{ route('todos.done', {id: todo.id}) }}" class="{{ html.classNames([
+                'check',
+                {
+                    'done': todo.done,
+                }
+            ]) }}">
+                @if(todo.done)
+                    &check;
+                @end
+            </a>
+            {{ todo.task }}
+        </li>
+    @end
+</ol>
+
+@include('components/footer.edge')

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> AdonisJS - A fully featured web framework for Node.js </title>
+
+        @if(entrypoint)
+            @vite([
+                'resources/js/app.js',
+                entrypoint,
+            ])
+        @else
+            @vite([
+                'resources/js/app.js',
+            ])
+        @end
+
+
+    </head>
+    <body>
+        <header>
+            <a href="{{ route('home') }}">
+                MyTodos
+            </a>
+
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{{ route('todos.index') }}">Todolist</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
